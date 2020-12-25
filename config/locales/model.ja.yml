@@ -3,15 +3,21 @@ ja:
     models:
       blog: ブログ
       user: ユーザー
+      picture: 記事
     attributes:
       blog:
         title: タイトル
         content: 内容
       user:
-        title: タイトル
         name: 名前
         email: メールアドレス
-        current_password: 現在のパスワード
         password: パスワード
         password_confirmation: 確認用パスワード
+        current_password: 現在のパスワード
+        password_digest: パスワード
+        image: 画像
         remember_me: ログインを記憶
+      picture:
+        title: タイトル
+        content: 内容
+        image: 画像
