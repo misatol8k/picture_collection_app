@@ -1,2 +1,30 @@
-<h1>Pictures#index</h1>
-<p>Find me in app/views/pictures/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1>Pictures</h1>
+<%= link_to '新規投稿する', new_picture_path %>
+<br><br>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Image</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pictures.each do |picture| %>
+      <tr>
+        <td><%= picture.title %></td>
+        <td><%= picture.content %></td>
+        <td><%= image_tag(picture.image.url) if picture.image && picture.image.url %></td>
+        <td><%= picture.user.name %></td>
+        <td><%= link_to '詳細', picture %></td>
+        <td><%= link_to '編集', edit_picture_path(picture) %></td>
+        <td><%= link_to '削除', picture, method: :delete, data: { confirm: '削除しますか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
