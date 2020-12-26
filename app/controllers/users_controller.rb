@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   def new
     @user = User.new
   end
@@ -20,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    # 記載する
     # @picture = current_user.pictures.build(picture_params)
     # if @picture.update(picture_params)
     #   redirect_to pictures_path, notice: "更新しました！"
@@ -30,9 +32,14 @@ class UsersController < ApplicationController
 
   def destroy
     # 記載する
+    # 記載する
   end
 
   private
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation,
