@@ -1,3 +1,10 @@
 <p id="notice"><%= notice %></p>
 <p>ユーザー名: <%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
+
+<% unless @user.image.blank? %>
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag @user.image.url %>
+  </p>
+<% end %>
