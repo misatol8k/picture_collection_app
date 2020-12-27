@@ -1,6 +1,28 @@
 <h1>Editing User</h1>
 
-<%= render 'form', user: @user %>
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+  <%= form.label :image %>
+  <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+  <%= form.file_field :image %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :password_digest, value: @user.password_digest %>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to 'Show', @user %>
