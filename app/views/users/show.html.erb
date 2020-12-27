@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
-<p>ユーザー名: <%= @user.name %></p>
+
+<p>名前: <%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>
 
 <% unless @user.image.blank? %>
-  <p>
-    <strong>Image:</strong>
-    <%= image_tag @user.image.url %>
-  </p>
+  <p>画像: <%= image_tag @user.image.url %></p>
 <% end %>
+
+<%= link_to '編集する', edit_user_path(@user) %> |
+<%= link_to 'お気に入りの記事を表示', users_path %>
