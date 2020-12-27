@@ -42,7 +42,6 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    # 書き方エラー出ないか確認する
     @picture.destroy
     respond_to do |format|
       format.html { redirect_to pictures_url, notice: '削除しました！' }
@@ -54,7 +53,7 @@ class PicturesController < ApplicationController
   def set_picture
     @picture = Picture.find(params[:id])
   end
-  
+
   def picture_params
     params.require(:picture).permit(:title, :content, :image, :image_cache)
   end
