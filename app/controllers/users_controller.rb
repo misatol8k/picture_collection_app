@@ -14,20 +14,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
   end
 
   def update
-    # 記載する
-    # @picture = current_user.pictures.build(picture_params)
-    # if @picture.update(picture_params)
-    #   redirect_to pictures_path, notice: "更新しました！"
-    # else
-    #   render :edit
-    # end
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      render :show, notice: "更新しました！"
+    else
+      render :edit
+    end
   end
 
   def destroy
