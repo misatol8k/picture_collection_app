@@ -20,6 +20,7 @@
   <strong>User:</strong>
   <%= @picture.user.name %>
 </p>
-
-<%= link_to '編集する', edit_picture_path(@picture) %> |
+<%= favorite_present %>
+<%= creator_user_edit %>
+<%= creator_user_destroy %>
 <%= link_to '一覧に戻る', pictures_path %>
