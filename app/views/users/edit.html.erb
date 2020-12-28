@@ -6,7 +6,7 @@
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% user.errors.full_messages.each do |message| %>
+      <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -21,7 +21,7 @@
   <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
   <%= form.file_field :image %>
   <%= form.hidden_field :image_cache %>
-  <%= form.hidden_field :password_digest, value: @user.password_digest %>
+  <%= form.hidden_field :password, value: @user.password_digest %>
   <%= form.submit %>
 <% end %>
 
