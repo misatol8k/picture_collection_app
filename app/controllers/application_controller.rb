@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
+
+  def creator_user
+    unless current_user.id == @picture.user_id
+      flash[:notice] = 'この記事は編集・削除できません'
+      redirect_to pictures_path
+    end
+  end
 end
