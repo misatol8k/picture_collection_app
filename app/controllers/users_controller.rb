@@ -29,8 +29,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # 記載する
-    # 記載する
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to new_session_path, notice: '削除しました！' }
+      format.json { head :no_content }
+    end
   end
 
   private
