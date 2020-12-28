@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <header>
+      <div class="container">
+      <% if logged_in? %>
+       <p><%= link_to "Profile", user_path(current_user.id) %></p>
+       <p><%= link_to "pictures", pictures_path(current_user.id) %></p>
+       <p><%= link_to "Logout", session_path(current_user.id), method: :delete %></p>
+       <p>ユーザー名: <%= current_user.name %></p>
+     <% else %>
+       <p><%= link_to "Sign up", new_user_path %></p>
+       <p><%= link_to "Login", new_session_path %></p>
+     <% end %>
+     </div>
+    </header>
+    <div class="article">
     <%= yield %>
   </body>
 </html>
