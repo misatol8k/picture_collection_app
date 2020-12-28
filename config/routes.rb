@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  get 'sessions/new'
-  get 'pictures/index'
+  root 'sessions#new'
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:show, :create, :destroy]
   resources :pictures do
     collection do
       post :confirm
