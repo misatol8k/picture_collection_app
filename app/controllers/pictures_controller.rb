@@ -33,7 +33,6 @@ class PicturesController < ApplicationController
   end
 
   def update
-    @picture = current_user.pictures.build(picture_params)
     if @picture.update(picture_params)
       redirect_to pictures_path, notice: "更新しました！"
     else
