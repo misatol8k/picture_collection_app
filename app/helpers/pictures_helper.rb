@@ -6,4 +6,25 @@ module PicturesHelper
       picture_path
     end
   end
+  def favorite_present
+    unless @picture.user_id == current_user.id
+      if @favorite.present?
+        link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger'
+      else
+        link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary'
+      end
+    end
+  end
+
+  def creator_user_edit
+    if @picture.user_id == current_user.id
+      link_to '編集', edit_picture_path(@picture)
+    end
+  end
+
+  def creator_user_destroy
+    if @picture.user_id == current_user.id
+      link_to '削除', @picture, method: :delete, data: { confirm: '削除しますか？' }
+    end
+  end
 end
