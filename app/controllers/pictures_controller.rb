@@ -44,7 +44,6 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    creator_user
     @picture.destroy
     respond_to do |format|
       format.html { redirect_to pictures_url, notice: '削除しました！' }
