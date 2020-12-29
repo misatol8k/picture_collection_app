@@ -5,9 +5,9 @@ one:
   email: MyString
   password_digest: MyString
   image: MyText
-
-two:
-  name: MyString
-  email: MyString
-  password_digest: MyString
-  image: MyText
+#
+# two:
+#   name: MyString
+#   email: MyString
+#   password_digest: MyString
+#   image: MyText
