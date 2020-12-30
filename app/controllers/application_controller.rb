@@ -14,4 +14,11 @@ class ApplicationController < ActionController::Base
       redirect_to pictures_path
     end
   end
+
+  def match_user
+    unless current_user.id == @user.id
+      flash[:notice] = 'このユーザーは編集・削除できません'
+      redirect_to pictures_path
+    end
+  end
 end
