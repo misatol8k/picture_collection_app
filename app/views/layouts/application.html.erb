@@ -4,7 +4,6 @@
     <title>PictureCollectionApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,6 +11,7 @@
   <body>
     <header>
       <div class="container">
+        <h2>ぺんぎんコレクション</h2>
       <% if logged_in? %>
        <p><%= link_to "Profile", user_path(current_user.id) %></p>
        <p><%= link_to "pictures", pictures_path(current_user.id) %></p>
@@ -24,6 +24,14 @@
      <% end %>
      </div>
     </header>
-    <%= yield %>
+
+    <div class="article">
+      <%= yield %>
+    </div>
+
+    <footer>
+      <%= image_tag "penguin3.png" %>
+      <p>株式会社 ぺんぎんクレイシ</p>
+    </footer>
   </body>
 </html>
