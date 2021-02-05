@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  before_action :authenticate_user
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user, only: [:index, :show ]
   # before_action :creator_user, only: [:edit, :update, :destroy]
