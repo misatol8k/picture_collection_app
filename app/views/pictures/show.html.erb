@@ -21,6 +21,8 @@
   <%= @picture.user.name %>
 </p>
 <%= favorite_present %>
-<%= creator_user_edit %>
-<%= creator_user_destroy %>
+<% if @picture.user_id == current_user.id %>
+  <%= link_to '編集', edit_picture_path(@picture) %>
+  <%= link_to '削除', @picture, method: :delete, data: { confirm: '削除しますか？' } %>
+<% end %>
 <%= link_to '一覧に戻る', pictures_path %>
