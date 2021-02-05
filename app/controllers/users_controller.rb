@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  # before_action :match_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
+  before_action :match_user, only: [:edit, :update, :destroy]
   def new
     @user = User.new
   end
@@ -49,5 +49,12 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_digest,
                                  :password_confirmation,
                                  :image, :image_cache, :id)
+  end
+
+  def match_user
+    unless @current_user.id == @user.id
+      flash[:notice] = 'このユーザーは編集・削除できません'
+      redirect_to pictures_path
+    end
   end
 end

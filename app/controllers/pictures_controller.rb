@@ -1,8 +1,8 @@
 class PicturesController < ApplicationController
   before_action :authenticate_user
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user, only: [:index, :show ]
-  # before_action :creator_user, only: [:edit, :update, :destroy]
+  before_action :creator_user, only: [:edit, :update, :destroy]
+
   def index
     @pictures = Picture.all
   end
@@ -61,5 +61,12 @@ class PicturesController < ApplicationController
 
   def picture_params
     params.require(:picture).permit(:title, :content, :image, :image_cache, :user_id)
+  end
+
+  def creator_user
+    unless @picture.user_id == current_user.id
+      flash[:notice] = 'この記事は編集・削除できません'
+      redirect_to pictures_path
+    end
   end
 end
