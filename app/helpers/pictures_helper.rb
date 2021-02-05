@@ -15,16 +15,4 @@ module PicturesHelper
       end
     end
   end
-
-  def creator_user_edit
-    if @picture.user_id == current_user.id
-      link_to '編集', edit_picture_path(@picture)
-    end
-  end
-
-  def creator_user_destroy
-    if @picture.user_id == current_user.id
-      link_to '削除', @picture, method: :delete, data: { confirm: '削除しますか？' }
-    end
-  end
 end
