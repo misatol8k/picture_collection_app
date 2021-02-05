@@ -22,6 +22,16 @@
         <td><%= image_tag(picture.image.url) if picture.image && picture.image.url %></td>
         <td><%= picture.user.name %></td>
         <td><%= link_to '詳細', picture %></td>
+        <td>
+          <% if picture.user_id == current_user.id %>
+          <%= link_to '編集', edit_picture_path(picture) %>
+          <% end %>
+        </td>
+        <td>
+          <% if picture.user_id == current_user.id %>
+          <%= link_to '削除', picture, method: :delete, data: { confirm: '削除しますか？' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
