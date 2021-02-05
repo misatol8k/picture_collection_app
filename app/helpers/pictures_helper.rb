@@ -27,13 +27,4 @@ module PicturesHelper
       link_to '削除', @picture, method: :delete, data: { confirm: '削除しますか？' }
     end
   end
-
-
-    def creator_user
-      unless @picture.user_id == current_user.id
-        flash[:notice] = 'この記事は編集・削除できません'
-        redirect_to pictures_path
-      end
-    end
-
 end
